@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Log4j2/Log4j2.iml" filepath="$PROJECT_DIR$/../Log4j2/Log4j2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Log4jTest/Log4jTest.iml" filepath="$PROJECT_DIR$/../Log4jTest/Log4jTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Logback/Logback.iml" filepath="$PROJECT_DIR$/../Logback/Logback.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SLF4J/SLF4J.iml" filepath="$PROJECT_DIR$/../SLF4J/SLF4J.iml" />
+      <module fileurl="file://$PROJECT_DIR$/journal.iml" filepath="$PROJECT_DIR$/journal.iml" />
+    </modules>
+  </component>
+</project>

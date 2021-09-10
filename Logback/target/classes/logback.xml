@@ -1,0 +1,156 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!--
+        配置文件通用属性
+        <property name=" value="></property>
+        所谓配置文件中的通用属性是为了让接下来的配置更加方便引用
+        通过以 EL表达式：${name}的形式，方便的取得value值
+        通过取得的value值可以做文件的其他配置而使用
+    -->
+
+    <!--
+        我们在此可以做日志输出格式的相关配置
+
+        以property的形式将日志输出格式配置成为文件通用的属性
+        那么接下来我们配置的输出方法中，就可以重复的引用该配置（以下的配置对于输出格式就不用配置多次了）
+    -->
+    <!--在我们实际的开发中，可以将经常用到的信息使用 property标签声明，这样可以实现多次的调用-->
+    <!--property标签 用于配置日志的输出格式，被这个标签声明的内容可以在多个地方进行引用-->
+    <!--使用property标签 的叫做通用属性配置-->
+    <property name = "pattern" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} %c %M %L %thread %m%n"></property>
+
+    <!--配置文件的输出路径(这里可以存储一个根路径，之后在不同的项目中进行修改，也可以存储一个要存储最终位置的路径)-->
+    <!--此时我们这里存储的是根路径，之后在指定的文件中添加子类经-->
+    <!-- 配置普通的log日志文件-->
+    <property name="logDir" value="E://test"></property>
+
+    <!--配置文件的appender-->
+    <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
+
+        <!--引入文件位置(这里还是使用EL表达式),EL表达式指定的是根路径，需要加上子类经-->
+        <file>${logDir}/logback.log</file>
+
+        <!--设置输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 配置输出html文件 -->
+    <!-- 这个也属于输出到指定文件，还是使用FileAppender类 -->
+    <appender name="htmlFileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>${logDir}/logback.html</file>
+        <!--设置输出格式-->
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <prttern>${pattern}</prttern>
+            </layout>
+        </encoder>
+    </appender>
+
+
+    <!--appender标签 用于配置日志输出的位置-->
+    <!--name是自己起的名字，class是这个输出到控制台的类-->
+    <!-- 配置控制台输出日志信息-->
+    <appender name = "consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <!--
+            target标签：表示对控制台打印日志信息的配置
+            默认：System.out 表示以黑色字体输出日志
+            设置：System.err 表示以红色字体输出日志
+            标准：System.in  表示以标准形式输出日志
+        -->
+        <target>
+            System.err
+        </target>
+
+        <!--
+            配置日志输出格式
+            我们此时手动设置格式的方法
+            这个时候我们直接引用上边的通用属性即可
+
+            这个时候我们使用的是自定义的日志输出格式，此时需要导入的类是PatternLayoutEncoder
+
+            这个encoder就相当于layout
+        -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+
+            <!--日志输出格式引用通用属性配置-->
+            <!--这里使用的是EL表达式 ${name} 因为在日志打印格式中的通用属性配置的name是pattern-->
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 配置文件的appender 可拆分归档的文件-->
+    <appender name="roll" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!-- 输出格式(自定义格式)使用EL表达式 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+        </encoder>
+        <!-- 设置文件位置(使用EL表达式) -->
+        <file>${logDir}/roll_logback.log</file>
+
+        <!-- 指定拆分规则(这里使用文件大小和时间来拆分日志信息) -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 按照时间和压缩格式来声明文件名-->
+            <!-- 下边的这一长串都是文件名 实际开发中，将日志设置到日即可 i是一个序号：用于区别日志文件-->
+            <!-- gz是一种压缩包格式，这个格式常在linux中使用 我们这里获取到的也是一个压缩文件-->
+            <fileNamePattern>${logDir}/roll.%d{yyyy-MM-dd}.log%i.gz</fileNamePattern>
+
+            <!-- 按照文件大小进行拆分 -->
+            <maxFileSize>1KB</maxFileSize>
+
+            <!-- 注意：这里只有这个文件的大小超过1KB的时候才会拆分日志文件，这个时候拆分出来的就是一个以上格式的压缩包-->
+        </rollingPolicy>
+    </appender>
+
+    <!-- 配置控制台appender 使用过滤器-->
+    <appender name="consoleFilterAppender" class="ch.qos.logback.core.ConsoleAppender">
+
+        <!-- 设置控制台输出信息形式 -->
+        <target>
+            System.err
+        </target>
+
+        <!-- 设置打印日志信息格式(自定义)-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+        </encoder>
+
+        <!-- 配置过滤器 -->
+        <fileter class="ch.qos.logback.classic.filter.LevelFilter">
+
+            <!-- 设置日志的输出级别 -->
+            <level>WARN</level>
+
+            <!-- 高于level中设置的级别，则打印日志 -->
+            <onMatch>ACCEPT</onMatch>
+
+            <!-- 低于level中设置的级别，则屏蔽日志 -->
+            <onMisMatch>DENY</onMisMatch>
+
+        </fileter>
+    </appender>
+
+    <!-- 配置异步日志 -->
+    <appender name="asyncAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="consoleAppender"/>
+    </appender>
+    <!--
+        日志记录器
+        配置root logger
+        level:配置日志级别
+    -->
+    <root level="ALL">
+        <!--引入appender，日志记录器，使用name属性来获取指定的appender对象-->
+        <!--<appender-ref ref="consoleAppender"/>-->
+        <appender-ref ref="asyncAppender"/>
+    </root>
+
+    <!-- 以上使用的是root(根节点的logger)，我们此时使用自定义的logger-->
+    <!-- 这里需要使用name属性来指定父类路径(这个路径必须是输出日志文件文件的父路径)-->
+    <logger name="com.yunbocheng" level="info" additivity="false">
+        <!-- 在自定义logger中配置appender -->
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+</configuration>
