@@ -27,7 +27,21 @@
 
 ## 三、清单
 
-### 2.JUL
+### 1. Java日志框架简介
+
+- [日志框架简介](./日志介绍.md)
+
+### 2. Log4j
+
+- [入门案例以及日志级别](Log4jTest/src/main/java/com/yunbocheng/入门案例以及日志级别.java)
+- [配置文件-输出到控制台](Log4jTest/src/main/java/com/yunbocheng/配置文件_输出到控制台.java)
+- [日志信息输出到文件](Log4jTest/src/main/java/com/yunbocheng/日志信息输出到文件.java)
+- [日志持久化(数据存储到数据库)](Log4jTest/src/main/java/com/yunbocheng/日志持久化_将数据存储到数据库.java)
+- [自定义Logger配置](Log4jTest/src/main/java/com/yunbocheng/自定义Logger配置.java)
+- [Log4j配置文件(log4j.properties)](Log4jTest/src/main/resources/log4j.properties)
+- [pom.xml](Log4jTest/pom.xml)
+
+### 3. JUL
 
 -	[入门案例以及默认级别](./JUL/src/com/yunbocheng/JUL/入门以及默认级别展示.java)
 -	[JUL配置文件](./JUL/src/com/yunbocheng/JUL/JUL配置文件.java)
@@ -35,40 +49,58 @@
 -	[JUL-Logger中的父子关系](./JUL/src/com/yunbocheng/JUL/JULLogger中的父子关系.java)
 -	[追加日志信息](./JUL/src/com/yunbocheng/JUL/追加日志信息.java)
 
+### 4. JCL
 
-### 1.Log4j
+- [入门案例](JCL/src/main/java/com/yunbocheng/入门案例.java)
+- [配置文件(log4j.properties)](JCL/src/main/resources/log4j.properties)
+- [pom.xml](JCL/pom.xml)
 
-- [Log4j配置文件](E:\JavaProject\journal\Log4jTest\src\main\resources\log4j.properties)
-- [入门案例以及日志级别](./src/main/java/com/yunbocheng/入门案例以及日志级别.java)
-- [日志信息输出到文件](./com/yunbocheng/日志信息输出到文件.java)
-- [配置文件-输出到控制台](./com/yunbocheng/配置文件_输出到控制台.java)
-- [配置文件-输出到控制台](./com/yunbocheng/配置文件_输出到控制台.java)
+### 5.SLF4J
 
+- [入门案例](SLF4J/src/main/java/com/yumbocheng/入门案例.java)
+- [打印异常信息](SLF4J/src/main/java/com/yumbocheng/打印异常信息.java)
+- [sfl4j_nop禁止日志打印](SLF4J/src/main/java/com/yumbocheng/sfl4j_nop禁止日志打印.java)
+- [SFL4J日志集成的分类](SLF4J/src/main/java/com/yumbocheng/SFL4J日志集成的分类.java)
+- [SLF4J集成log4j的方法](SLF4J/src/main/java/com/yumbocheng/SLF4J集成log4j的方法.java)
+- [SLF4J集成JUL](SLF4J/src/main/java/com/yumbocheng/SLF4J集成JUL.java)
+- [日志重构](SLF4J/src/main/java/com/yumbocheng/日志重构.java)
+- [配置文件(log4j.properties)](SLF4J/src/main/resources/log4j.properties)
+- [pom.xml](SLF4J/pom.xml)
 
-### 3. jQuery
+### 6.Logback
 
+- [入门案例](Logback/src/main/java/com/yunbocheng/入门案列.java)
+- [Logback配置文件](Logback/src/main/java/com/yunbocheng/Logback配置文件.java)
+- [将日志信息打印到指定文件](Logback/src/main/java/com/yunbocheng/将日志信息打印到指定文件.java)
+- [日志输出为html文件](Logback/src/main/java/com/yunbocheng/日志输出为html文件.java)
+- [日志的拆分和归档操作](Logback/src/main/java/com/yunbocheng/日志的拆分和归档操作.java)
+- [使用过滤器更细粒度的打印日志](Logback/src/main/java/com/yunbocheng/使用过滤器更细粒度的打印日志.java)
+- [异步日志](Logback/src/main/java/com/yunbocheng/异步日志.java)
+- [配置文件(logback.xml)](Logback/src/main/resources/logback.xml)
+- [pom.xml](Logback/pom.xml)
 
--	[第一个jQuery网页](./JQuery语法以及测试程序/src/jqury/第一个jQuery网页.html)
--	[DOM对象转化为jQuery对象](./JQuery语法以及测试程序/src/jqury/DOM对象转化为jQuery对象.html)
--	[jQuery对象转换为DOM对象](./JQuery语法以及测试程序/src/jqury/jQuery对象转换为DOM对象.html)
--	[jQuery绑定事件与基本过滤器](./JQuery语法以及测试程序/src/jqury/jQuery绑定事件与基本过滤器.html)
--	[on 事件绑定](./JQuery语法以及测试程序/src/jqury/on事件绑定.html)
--	[表单对象属性过滤器](./JQuery语法以及测试程序/src/jqury/表单对象属性过滤器.html)
--	[表单选择器与jQuery函数](./JQuery语法以及测试程序/src/jqury/表单选择器与jQuery函数.html)
--	[jQuery库函数hide函数等](./JQuery语法以及测试程序/src/jqury/jQuery库函数hide函数等.html)
--	[JQuery概念](./JQuery概念.md)
--	[jQuery思维导图](./jQuery思维导图.pdf)
--	[jQuery官方文档](./JQuery语法以及测试程序/src/jqury/jquery-3.6.0.js)
+### 7.Log4j2
 
-### 4.省市级联查询项目
+- [入门案例](Log4j2/src/main/java/com/yunbocheng/入门案例.java)
+- [Log4j2基础标签](Log4j2/src/main/java/com/yunbocheng/Log4j2基础标签.java)
+- [Log4j2与SLF4J联合使用](Log4j2/src/main/java/com/yunbocheng/Log4j2与SLF4J联合使用.java)
+- [日志文件输出](Log4j2/src/main/java/com/yunbocheng/日志文件输出.java)
+- [log4j2日志拆分](Log4j2/src/main/java/com/yunbocheng/log4j2日志拆分.java)
+- [异步实现使用AsyncAppender](Log4j2/src/main/java/com/yunbocheng/异步实现使用AsyncAppender.java)
+- [AsyncLogger方式实现全局刷新](Log4j2/src/main/java/com/yunbocheng/AsyncLogger方式实现全局刷新.java)
+- [AsyncLogger方式实现混合异步](Log4j2/src/main/java/com/yunbocheng/AsyncLogger方式实现混合异步.java)
+- [配置文件(logback.xml)](Log4j2/src/main/resources/log4j2.xml)
+- [全局异步配置文件(log4j2.component.properties)](Log4j2/src/main/resources/log4j2.component.properties)
+- [pom.xml](Log4j2/pom.xml)
 
--	[省市级联查询](./Jquery和Ajax实现省市级联查询)
 
 ## 四、参考文献
 
-W3C在线文档 :
+在线文档 :
 
-> - [W3C官方文档](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/)
+> - [SLF4J官方文档](http://www.slf4j.org/)
+> - [Maven中央仓库](https://mvnrepository.com/)
+
 
 ## 五、反馈及改进
 
@@ -90,8 +122,7 @@ W3C在线文档 :
 
 ## 八、致谢
 
->  1. 感谢动力节点提供的Ajax在线课程视频资料 [Ajax在线课程](https://www.bilibili.com/video/BV15k4y167XM)
->  2. 感谢动力节点提供的JQuery在线课程视频资料 [JQuery在线课程](https://www.bilibili.com/video/BV1Jg4y1B7n4)
+>  1. 感谢动力节点提供的Java日志在线课程视频资料 [Java日志在线课程](https://www.bilibili.com/video/BV1Mb4y1Z74W)
 >  2. 感谢JetBrains提供的配套开发环境许可证 [官方网站](https://www.jetbrains.com/)
 >  3. 感谢Gitee提供的图床平台 [相关地址](https://gitee.com/YunboCheng/imageBad)
 

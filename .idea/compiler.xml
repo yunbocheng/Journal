@@ -14,7 +14,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="JCl" target="1.7" />
+      <module name="JCl" target="1.8" />
       <module name="Log4j2" target="1.8" />
       <module name="Log4jTest" target="1.8" />
       <module name="Logback" target="1.8" />
